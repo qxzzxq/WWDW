@@ -1,5 +1,5 @@
 # Tirage au sort !
-# @auther: Qin
+# @author: Qin
 
 library(shiny)
 library(futile.logger)
