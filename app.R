@@ -138,7 +138,7 @@ server <- function(input, output, session) {
   observeEvent(input$go, {
     lucky_guys <- sample(input$who, size = input$number_of_players)
     action_present <- paste0(paste(lucky_guys, collapse = " and "), " will ", input$what, "!")
-    action_past <- paste0(paste(lucky_guys, collapse = " and "), ": ", input$what)
+    action_past <- paste0(paste(lucky_guys, collapse = " and "), ": ", input$what, " (participants: ", paste(input$who, collapse = ", "), ")")
     
     for (guy in lucky_guys) {
       player_data(update_user_data(reactive_data = player_data, name = guy))
@@ -161,7 +161,7 @@ server <- function(input, output, session) {
   
   output$what_happened_recently <- renderUI({
     text <- action_data()
-    HTML("<h3>The 10 last lucky guys</h3>", paste(text, collapse = '<br/>'))
+    HTML("<h3>What happened recently?</h3>", paste(text, collapse = '<br/>'))
   })
 }
 
